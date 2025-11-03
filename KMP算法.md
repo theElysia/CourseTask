@@ -100,7 +100,7 @@ int *buildNext(const char *pattern)
 首先意识到求解 $next[i]$需要参考的是 $prefix[i-1]$。
 而 $next[0:i-1]$包含了 $prefix[0:i-2]$的信息，故可以只保留 $prefix[i-1]$。
 
-此时递归求解prefix的过程用到了next的性质。注意总是有$prefix[i]\leq prefix[i-1]+1$这条约束，方便我们递推计算。相当于此时用已求解的next去匹配pattern[i-1]。
+此时递归求解prefix的过程用到了next的性质。注意总是有 $prefix[i]\leq prefix[i-1]+1$ 这条约束，方便我们递推计算。相当于此时用已求解的next去匹配 $pattern[i-1]$。
 
 ```c++
 int *buildNext_ultimate(const char *pattern)
