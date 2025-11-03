@@ -43,14 +43,15 @@ int *buildNext(const char *pattern)
 
 ### Step 2: 构建next列表
 
-显然直接根据$prefix[i]$来匹配text仍不是最优，比如对于串aabaab，$prefix[5]=3$，但当最后一个b不匹配时，我们并不需要去接着$pattern[0:2]$继续匹配。
+显然直接根据 $prefix[i]$来匹配text仍不是最优，比如对于串aabaab，$prefix[5]=3$，但当最后一个b不匹配时，我们并不需要去接着 $pattern[0:2]$继续匹配。
 
 在 $target[i]\neq text[j]$ 字符不匹配时，我们希望的next列表有如下性质：
 
 - $next=-1$ ，当下一次匹配该尝试 $target[0], text[j+1]$ 时
 - $next=t\neq -1$ ，当下一次匹配该尝试 $target[t], text[j]$ 时
 
-当 $next=t$ 时，显然有
+当 $next=t$ 时，显然有 
+
 $$
 \begin{cases}
 pattern[0:t-1]=pattern[i-t:i-1]=text[j-t:j-1] \\
