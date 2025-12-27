@@ -112,6 +112,8 @@ int *buildNext_ultimate(const char *pattern)
     for (size_t i = 1; i < size_pattern; i++)
     {
         // 先求prefix[i-1]
+        // 注意循环不变式，退出时若有pattern[prefix] == pattern[i-1]
+        // 这个prefix需要+1。对于-1边界考虑一下后续处理也成立
         while (prefix > -1 && pattern[prefix] != pattern[i-1])
             prefix = next[prefix];
         // 再求next[i]，注意next性质
